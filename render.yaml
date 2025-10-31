@@ -3,6 +3,6 @@ services:
     name: flask-app
     env: python
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
-    autoDeploy: false  # We will trigger deployment via GitHub Actions
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: python -m gunicorn app:app --bind 0.0.0.0:$PORT
+    autoDeploy: false
